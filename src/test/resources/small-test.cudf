@@ -1,0 +1,40 @@
+package: SoundHelper
+version: 1
+
+package: SoundModule
+version: 1
+conflicts: SoundModuleAdvanced
+installed: true
+
+package: SoundModule
+version: 2
+depends: SoundHelper
+conflicts: SoundModuleAdvanced
+
+package: SoundModuleAdvanced
+version: 1
+conflicts: SoundModule
+
+package: SoundModuleAdvanced
+version: 2
+conflicts: SoundModule
+
+package: Spotify
+version: 1
+depends: SoundModule >= 1 | SoundModuleAdvanced
+installed: true
+
+package: Spotify
+version: 2
+depends: SoundModuleAdvanced
+
+package: Tidal
+version: 1
+depends: SoundModule = 2 | SoundModuleAdvanced = 2
+
+package: MusicPlus
+version: 2
+depends: Spotify >= 2 | Tidal >= 1
+
+request: Customer Order
+install: MusicPlus = 2
